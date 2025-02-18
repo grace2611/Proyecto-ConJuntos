@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap');
+
+body {
+    background-color: #FFC72C;/* Color de fondo amarillo */
+    font-family: 'Arial', sans-serif;/* Fuente del texto */
+    text-align: center;/* Centrar el contenido */
+    margin: 0;/* Quita los márgenes del body */
+    padding: 0;/* Quita el espacio interno del body */
+    height: 100vh; /* Ocupar toda la pantalla */
+    display: flex;/* Para centrar verticalmente */
+    flex-direction: column;/* Alinear elementos en columna */
+    justify-content: flex-end;/* Mantener el contenido en la parte inferior */
+}
+
+/* Fondo semicircular */
+.contenedor {
+    background-color: #86004C;/* Color vino */
+    color: white;/* Texto en color blanco */
+    padding: 10px;/* Espaciado interno: 80px arriba/abajo, 20px lados */
+    border-radius: 900% 900% 0 0;/* Hace que la parte superior sea curva */
+    width: 100%;/* Ancho completo */
+    height: 90vh;/* Ocupa el 90% de la pantalla */
+    max-width: none;/* Quita restricciones de ancho */
+    display: flex;/* Alinear los elementos internos */
+    flex-direction: column;/* Alinear en columna */
+    justify-content: center; /* Centrar verticalmente */
+}
+
+
+
+/* Títulos */
+h1 {
+    font-size: 40px;/* Tamaño del título principal */
+    margin-bottom: -250px;/* Espacio debajo del título */
+    font-family: "Chau Philomene One", serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+h2 {
+    font-size: 18px; /* Tamaño del subtítulo */
+    font-weight: normal; /* Evitar negritas */
+    margin-bottom: 10px; /* Espacio debajo del subtítulo */
+    font-family: "Chau Philomene One", serif;
+    font-weight: 400;
+    font-style: normal;
+
+
+}
+
+h3 {
+    font-size: 50px;/* Tamaño del subtítulo */
+    font-weight: normal;/* Evitar negritas */
+    font-family: "Chau Philomene One", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.boton:hover {
+    background-color: #333f4b; /* Cambia esto al color que desees */
+}
+
+
+/* Contenedor de las opciones de donación */
+.opciones {
+    display: flex;
+    /* Alinear opciones en fila */
+    justify-content: space-around;
+    /* Distribuirlas de manera uniforme */
+    flex-wrap: wrap;
+    /* Permitir que se acomoden si la pantalla es pequeña */
+    margin-top: 350px;
+    /* Espacio entre el título y las opciones */
+    gap: 10px;
+    /* espacio entre cada opción */
+}
+
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* espacio entre botones */
+    
+}
+
+.boton {
+    flex: 1;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #ff69b4; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* estilo de cada opción de donación */
+.opcion {
+    background-color: #f5bfd7; /* Color rosado claro */
+    color: #51606f; /* Texto en morado oscuro */
+    padding: 20px;/* Espacio interno dentro de cada opción */
+    border-radius: 50px;/* Bordes redondeados */
+    width: 250px;/* Ancho fijo */
+    height: 330px;/* Altura fija */
+    text-align: center;/* Centrar el contenido */   
+    box-shadow: 4px 4px 10px rgba(19, 13, 13, 0.2);/* Sombra suave */
+    transition: transform 0.3s ease-in-out;/* Efecto de agrandamiento al pasar el mouse */
+    position: relative;/* Permitir posicionar elementos internos */
+}
+
+/* Imágenes dentro de las opciones (sobresaliendo) */
+.opcion img {
+    width: 150px; /* Ancho de la imagen */
+    height: 150px; /* Altura fija */
+    object-fit: contain; /* Ajustar la imagen sin deformarla */
+    position: absolute;/* Posicionamiento absoluto */
+    top: -50px;/* Hace que sobresalga del cuadro */
+    left: 50%;/* Centrar la imagen horizontalmente */
+    transform: translateX(-50%);/* Ajustar el centrado */
+    border: none;/* quitar marco de la imagen*/
+}
+
+.ir-arriba {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ir-arriba img {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+}
+
+.ir-arriba a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+
+/* Botón */
+.boton {
+    background-color: #63918b; /* Color verde */
+    color: white;/* Texto en blanco */
+    padding: 12px 20px;/* Espacio interno dentro del botón */
+    border: none; /* Quita los bordes */
+    border-radius: 10px;/* Bordes redondeados */
+    font-size: 20px;/* Tamaño del texto */
+    cursor: pointer;/* Hace que el cursor cambie a una mano */
+    transition: background 0.3s ease;/* Efecto de color cuando pase el raton */
+    
+}
+
+@media (max-width: 768px) {
+    .contenedor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 50% 50% 0 0; /* Ajuste del fondo */
+        padding-bottom: 50px;
+        width: 100%;
+    }
+
+    .opciones {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .opcion {
+        width: 90%;
+        max-width: 350px;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .opcion img {
+        width: 120px; /* Tamaño de imagen más grande */
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    .boton {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+}
