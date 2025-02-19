@@ -1,9 +1,27 @@
+@font-face {
+  font-family: 'Max Rounded';
+  src: url('../font/Maax Rounded.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Max Rounded Bold';
+  src: url('../font/Maax\ Rounded\ Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
+  font-family: 'Max Rounded', sans-serif;
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden; 
   height: 100%;
+}
+
+.sombra {
+  box-shadow: 4px 4px 4px rgba(123, 123, 123, 0.5);
 }
 
 .snap-container {
@@ -21,32 +39,56 @@ html, body {
   align-items: center;
   justify-content: center;
 }
+
+/* Modificación en card-item para usar ::before y lograr el efecto blur */
 .card-item {
-  background-color:rgb(161, 82, 9);
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  width: 100%;
+  height: 100vh;
+  background-color: transparent; /* Asegura que no se muestre el fondo blanco */
+}
+
+.card-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/adminconjuntos.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(5px); 
+  z-index: -1;
 }
 
 .minicards {
-  background-color:rgb(235, 223, 213);
+  background-color: rgba(255, 255, 255, 0.617);
   margin: 0;
   border-radius: 17px;
 }
 
-.botonseccion{
+.fondo-transparente{
+  background-color: rgba(255, 255, 255, 0.617);
+}
+
+.botonseccion {
   border-radius: 17px;
 }
 
-#minicard1 { height: 50px; margin-left: 5px; margin-top: 5px;}
-#minicard2 { height: 153px; margin-left: 5px;}
-#minicard3 { height: 50px; margin-left: 5px;}
-#minicard4 { height: 153px; margin-left: 5px;}
-#minicard5 { height: 50px; margin-left: 5px;}
-#minicard6 { height: 153px; margin-bottom: 5px; margin-left: 5px;}
-#minicard7 { height: 50px; margin-left: 5px; margin-right: 5px; margin-top: 5px;}
-#minicard8 { height: 523px; margin-left: 5px; margin-right: 5px;}
-#minicard9 { height: 50px; margin-bottom: 5px; margin-left: 5px; margin-right: 5px;}
-#minicard10 { height: 207px; margin-right: 5px; margin-top: 5px;}
-#minicard11 { height: 207px; margin-right: 5px;}
-#minicard12 { height: 207px; margin-right: 5px; margin-bottom: 5px;}
+#minicard1 { height: 50px; margin-left: 5px; margin-top: 5px; }
+#minicard2 { height: 153px; margin-left: 5px; }
+#minicard3 { height: 50px; margin-left: 5px; }
+#minicard4 { height: 153px; margin-left: 5px; }
+#minicard5 { height: 50px; margin-left: 5px; }
+#minicard6 { height: 153px; margin-bottom: 5px; margin-left: 5px; }
+#minicard7 { height: 50px; margin-left: 5px; margin-right: 5px; margin-top: 5px; }
+#minicard8 { height: 523px; margin-left: 5px; margin-right: 5px; }
+#minicard9 { height: 50px; margin-bottom: 5px; margin-left: 5px; margin-right: 5px; }
+#minicard10 { height: 207px; margin-right: 5px; margin-top: 5px; }
+#minicard11 { height: 207px; margin-right: 5px; }
+#minicard12 { height: 207px; margin-right: 5px; margin-bottom: 5px; }
 
 .card {
   margin-bottom: 3.6px;
@@ -64,6 +106,7 @@ html, body {
 .minicard-large {
   width: 45%; 
 }
+
 .minicard-small {
   width: 5%;
 }
@@ -71,24 +114,26 @@ html, body {
 .minicards-flex > .card {
   margin: 0;
 }
+
 .table-responsive thead th {
   position: sticky;
   top: 0;
   z-index: 1; 
-  background-color: #343a40; 
+  background-color: rgb(147, 3, 69); 
 }
 
-.minicard-seccion2{
-  background-color:rgb(235, 223, 213);
+.minicard-seccion2 {
+  background-color: rgba(255, 255, 255, 0);
 }
 
-.minicard-seccion3{
-  background-color:rgb(235, 223, 213);
+.minicard-seccion3 {
+  background-color: rgba(255, 255, 255, 0);
 }
 
-.cuadrodedatos{
+.cuadrodedatos {
   height: 465px;
 }
-.card-title-main{
+
+.card-title-main {
   margin-top: 2px;
 }

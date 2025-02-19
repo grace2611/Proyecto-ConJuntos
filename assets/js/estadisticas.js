@@ -19,7 +19,7 @@ const selDonaciones = document.getElementById("ordenar-donaciones");
 const selVoluntariados = document.getElementById("ordenar-voluntariados");
 
 let donationData = [],
-  volunteerData = [];
+    volunteerData = [];
 
 const parseFecha = (f) => (f?.toDate ? f.toDate().getTime() : new Date(f).getTime());
 const formatDate = (ts) =>
@@ -50,18 +50,17 @@ const renderDonations = (data) => {
       : 0;
   });
   tablaDonaciones.innerHTML = data
-    .map(
-      (d) => `
-    <tr>
-      <td>${d.nombre}</td>
-      <td>${d.email}</td>
-      <td>${d.moneda}</td>
-      <td>${d.tipo}</td>
-      <td>${d.monto}</td>
-      <td>${d.mensaje}</td>
-      <td>${formatDate(parseFecha(d.fecha))}</td>
-    </tr>`
-    )
+    .map((d) => `
+      <tr>
+        <td>${d.nombre}</td>
+        <td>${d.email}</td>
+        <td>${d.moneda}</td>
+        <td>${d.tipo}</td>
+        <td>${d.monto}</td>
+        <td>${d.mensaje}</td>
+        <td>${formatDate(parseFecha(d.fecha))}</td>
+      </tr>
+    `)
     .join("");
 };
 
@@ -79,19 +78,19 @@ const renderVolunteers = (data) => {
       : 0;
   });
   tablaVoluntariados.innerHTML = data
-    .map(
-      (d) => `
-    <tr>
-      <td>${d.nombre}</td>
-      <td>${d.email}</td>
-      <td>${d.telefono || "N/A"}</td>
-      <td>${d.habilidades || "N/A"}</td>
-      <td>${formatDate(parseFecha(d.fecha))}</td>
-    </tr>`
-    )
+    .map((d) => `
+      <tr>
+        <td>${d.nombre}</td>
+        <td>${d.email}</td>
+        <td>${d.telefono || "N/A"}</td>
+        <td>${d.habilidades || "N/A"}</td>
+        <td>${formatDate(parseFecha(d.fecha))}</td>
+      </tr>
+    `)
     .join("");
 };
 
+// Configuración del gráfico de barras
 const ctx = document.getElementById("barChart").getContext("2d");
 const monthLabels = ["Noviembre 2024", "Diciembre 2024", "Enero 2025", "Febrero 2025"];
 
@@ -103,15 +102,35 @@ const barChart = new Chart(ctx, {
       {
         label: "Donaciones",
         data: [0, 0, 0, 0],
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
+        backgroundColor: [
+          "rgb(147, 3, 69)",
+          "rgb(147, 3, 69)",
+          "rgb(147, 3, 69)",
+          "rgb(147, 3, 69)",
+        ],
+        borderColor: [
+          "rgb(88, 4, 42)",
+          "rgb(88, 4, 42)",
+          "rgb(88, 4, 42)",
+          "rgb(88, 4, 42)",
+        ],
         borderWidth: 1
       },
       {
         label: "Voluntariados",
         data: [0, 0, 0, 0],
-        backgroundColor: "rgba(54, 162, 235, 0.2)",
-        borderColor: "rgba(54, 162, 235, 1)",
+        backgroundColor: [
+          "rgb(249, 211, 50)",
+          "rgb(249, 211, 50)",
+          "rgb(249, 211, 50)",
+          "rgb(249, 211, 50)",
+        ],
+        borderColor: [
+          "rgb(249, 211, 50)",
+          "rgb(249, 211, 50)",
+          "rgb(249, 211, 50)",
+          "rgb(249, 211, 50)",
+        ],
         borderWidth: 1
       }
     ]
@@ -157,8 +176,8 @@ function updateChartData() {
   barChart.update();
 }
 
+// Gráfico circular para monedas
 const donationTypeCtx = document.getElementById("donationTypeChart").getContext("2d");
-
 const donationTypeChart = new Chart(donationTypeCtx, {
   type: "doughnut",
   data: {
@@ -166,8 +185,8 @@ const donationTypeChart = new Chart(donationTypeCtx, {
     datasets: [
       {
         data: [0, 0],
-        backgroundColor: ["rgba(75, 192, 192, 0.6)", "rgba(153, 102, 255, 0.6)"],
-        borderColor: ["rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)"],
+        backgroundColor: ["rgb(147, 3, 69)", "rgb(249, 211, 50)"],
+        borderColor: ["rgb(88, 4, 42)", "rgb(161, 138, 33)"],
         borderWidth: 1
       }
     ]
@@ -202,6 +221,7 @@ function updateDonationTypeChart() {
   donationTypeChart.update();
 }
 
+// Gráfico circular para tipo de donación (Única vs Mensual)
 const donationTypeDonacionCtx = document.getElementById("donationTypeDonacionChart").getContext("2d");
 const donationTypeDonacionChart = new Chart(donationTypeDonacionCtx, {
   type: "doughnut",
@@ -210,8 +230,8 @@ const donationTypeDonacionChart = new Chart(donationTypeDonacionCtx, {
     datasets: [
       {
         data: [0, 0],
-        backgroundColor: ["rgba(255, 159, 64, 0.6)", "rgba(54, 162, 235, 0.6)"],
-        borderColor: ["rgba(255, 159, 64, 1)", "rgba(54, 162, 235, 1)"],
+        backgroundColor: ["rgb(147, 3, 69)", "rgb(249, 211, 50)"],
+        borderColor: ["rgb(88, 4, 42)", "rgb(161, 138, 33)"],
         borderWidth: 1
       }
     ]
@@ -242,6 +262,7 @@ function updateDonationTypeDonacionChart() {
   donationTypeDonacionChart.update();
 }
 
+// Gráfico circular para monto de donación
 const donationAmountCtx = document.getElementById("donationAmountChart").getContext("2d");
 const donationAmountChart = new Chart(donationAmountCtx, {
   type: "doughnut",
@@ -251,16 +272,16 @@ const donationAmountChart = new Chart(donationAmountCtx, {
       {
         data: [0, 0, 0, 0],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(75, 192, 192, 0.6)",
-          "rgba(153, 102, 255, 0.6)",
-          "rgba(201, 203, 207, 0.6)"
+          "rgb(147, 3, 69)",
+          "rgb(255, 59, 157)",
+          "rgb(249, 211, 50)",
+          "rgb(172, 143, 15)",
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(201, 203, 207, 1)"
+          "rgb(88, 4, 42)",
+          "rgb(171, 27, 99)",
+          "rgb(161, 138, 33)",
+          "rgb(111, 93, 14)",
         ],
         borderWidth: 1
       }
@@ -275,9 +296,9 @@ const donationAmountChart = new Chart(donationAmountCtx, {
 
 function updateDonationAmountChart() {
   let count15 = 0,
-    count20 = 0,
-    count50 = 0,
-    countOthers = 0;
+      count20 = 0,
+      count50 = 0,
+      countOthers = 0;
 
   donationData.forEach((d) => {
     if (d.monto) {
@@ -313,6 +334,7 @@ function updateCounters() {
   });
 }
 
+// Actualizamos datos en tiempo real desde Firebase
 onSnapshot(collection(db, "usuarios"), (snap) => {
   donationData = snap.docs.map((doc) => doc.data());
   renderDonations(donationData);
@@ -335,38 +357,3 @@ onSnapshot(collection(db, "voluntariados"), (snap) => {
 
 selDonaciones.addEventListener("change", () => renderDonations(donationData));
 selVoluntariados.addEventListener("change", () => renderVolunteers(volunteerData));
-
-function animateCounter(el) {
-  const target = +el.getAttribute("data-target");
-  const duration = 2000;
-  const frameRate = 60;
-  const totalFrames = Math.round(duration / (1000 / frameRate));
-  let frame = 0;
-
-  const counter = setInterval(() => {
-    frame++;
-    const progress = frame / totalFrames;
-    const currentValue = Math.round(target * progress);
-    el.innerText = currentValue;
-    if (frame === totalFrames) {
-      clearInterval(counter);
-      el.innerText = target;
-    }
-  }, 1000 / frameRate);
-}
-
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.innerText = "0";
-        animateCounter(entry.target);
-      }
-    });
-  },
-  { threshold: 0.5 }
-);
-
-document.querySelectorAll(".totalDonantes, .totalVoluntarios, .totalDonacion").forEach((counter) => {
-  observer.observe(counter);
-});

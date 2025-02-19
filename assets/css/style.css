@@ -1,96 +1,341 @@
+/* --- Fuentes --- */
+@font-face {
+  font-family: 'Max Rounded';
+  src: url('font/Maax Rounded.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Max Rounded Bold';
+  src: url('font/Maax Rounded Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* --- Reset y estilos globales --- */
 * {
-    padding: 0;
-    margin: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html, body {
-    overflow-x: hidden; /* Elimina el scroll horizontal */
+html,
+body {
+  color: #930345;
+  font-family: 'Max Rounded', sans-serif;
+  height: 100%;
+  overflow: hidden; /* El scroll se realizará en .snap-container */
+}
+
+/* --- Navbar --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 100;
+  background-color: rgb(249, 211, 50);
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+.navbar.scrolled {
+  background-color: rgba(249, 212, 50, 0.826);
+}
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.imagenlogo {
+  width: 80px;
+  height: auto;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
+}
+.nav-links li a {
+  color: #930345;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-size: 1rem;
+}
+.nav-links li:last-child a {
+  margin-right: 0.2rem;
+}
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* --- Snap Container --- */
+.snap-container {
+  margin-top: 70px; /* Altura del navbar */
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  overscroll-behavior: contain;
+}
+
+/* --- Snap Items --- */
+.snap-item {
+  scroll-snap-align: start;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.snap-item.footer {
+  height: 30%;
+}
+
+/* Fondos para cada snap item */
+#Inicio {
+  background-color: #faebd7;
+}
+#snap2 {
+  background-color: #faebd7;
+}
+#Valores {
+  background-color: #ffffff;
+}
+#NuestrosProgramas {
+  background-color: #faebd7;
+}
+#snap6 {
+  background-color: #faebd7;
+}
+#Footer {
+  background-color: rgb(249, 211, 50);
+  ;
+}
+/* Footer */
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-info p {
+  color: #930345;
+  margin: 5px 0;
+}
+.social-icons a {
+  color: #930345;
+  font-size: 2rem;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #ff69b4;
+}
+.admin-btn {
+  border: 2px solid #ff69b4;
+  background: none;
+  color: #ff69b4;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+}
+.admin-btn:hover {
+  background-color: #ff3b9d;
+  color: white;
 }
 
 
-.fotos {
-    width: 80%; /* Ajusta el tamaño del carrusel */
-    max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
-    margin: 80px auto; /* Centrar y dejar espacio arriba */
-}
-
-.carousel img {
-    width:500px;
-    height: 350px; /* Altura fija */
-    object-fit: cover; /* Recorta la imagen para que llene el espacio */
-}
-
-html, body {
-    height: 100%; /* Asegura que el body ocupe toda la altura */
-    display: flex;
+/* --- Responsive para Navbar --- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
     flex-direction: column;
-}
-.titulo {
-    max-width: 800px; /* Limita el ancho para que no sea demasiado grande */
-    margin: 50px auto; /* Centra horizontalmente */
-    text-align: center; /* Asegura que el texto esté centrado */
-    padding: 20px; /* Espaciado interno */
-    margin-top: 10px;
-}
-
-.titulo h4 {
-    font-size: 2.5rem; /* Hace el título más grande */
-    font-weight: bold;
-    color: #930345; /* Asegura que el color sea visible */
-}
-
-.titulo p {
-    font-size: 1.2rem; /* Tamaño más grande para mejor lectura */
-    color: #930345; /* Asegura que el texto sea visible */
-    line-height: 1.5; /* Mejora el espaciado entre líneas */
-}
-.valores {
-    display: block;
-    margin: 20px auto; /* Centrar la imagen */
-    max-width: 80%; /* Limitar su tamaño */
-}
-.footer {
-    margin-top: auto; /* Empuja el footer hacia abajo */
+    background-color: rgb(249, 211, 50);
+    position: absolute;
+    top: 70px;
+    right: 0;
     width: 100%;
-    background-color: #212529; /* Color oscuro de Bootstrap */
-    color: rgb(189, 64, 238);
     text-align: center;
-    padding: 15px 0;
-}
-.footer {
-    background-color: #f9d332 !important; /* Amarillo */
-    color: black; /* Texto en negro para contraste */
-}
-.nav-item a{
-    color: #930345 !important;
-}
-
-.footer p {
-    color: #930345 !important; /* Morado */
+    padding: 1rem 0;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
 }
 
-.footer a {
-    color: #930345 !important; /* Color lila por defecto */
-    font-size: 2rem; /* Tamaño de los iconos */
-    margin: 0 10px; /* Espaciado entre los iconos */
-    transition: color 0.3s ease-in-out; /* Transición suave */
+/* --- Carousel Styles --- */
+.carousel-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 500px;
+}
+.thumbnail-slider {
+  width: 100px;
+  height: 100%;
+}
+.thumbnail-slider .swiper-slide {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.thumbnail-slider .swiper-slide-thumb-active {
+  opacity: 1;
+}
+.thumbnail-slider .swiper-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.main-slider {
+  flex: 1;
+  height: 100%;
+}
+.main-slider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-/* Cambio de color al pasar el mouse */
-.footer a:hover {
-    color: #930345 !important; /* Rosa */
+/* --- Cards Container --- */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+.card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.imagen-programas,
+.imagen-identidad {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-.footer i:hover {
-    color: #FF69B4 !important; /* Un tono más oscuro al pasar el mouse */
+/* --- Responsive para Carousel y Cards --- */
+@media (max-width: 768px) {
+  .carousel-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .thumbnail-slider {
+    width: 100%;
+    height: auto;
+  }
+  .main-slider {
+    width: 100%;
+    height: 500px;
+  }
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
 }
 
-.btn-outline-danger {
-    border-color: #FF69B4 !important; /* Borde rosa */
-    color: #FF69B4 !important; /* Texto rosa */
+/* --- Estilos para la sección de Donaciones (#donaciones-snap) --- */
+#donaciones-snap {
+  width: 100%;
+  height: 100%;
+  background-color: #f8c22e;
+  background-image: url(https://casaronald.org.pe/wp-content/uploads/conJuntos2.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
-
-.btn-outline-danger:hover {
-    background-color: #FF3b9d !important; /* Fondo rosa al pasar el mouse */
-    color: white !important; /* Texto blanco */
+#donaciones-snap .container {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 600px;
+  width: 90%;
+  z-index: 1;
+}
+#donaciones-snap h1 {
+  color: #75005f;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+#donaciones-snap .btn-primary,
+#donaciones-snap .btn-secondary {
+  background-color: #75005f;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+#donaciones-snap .btn-primary:hover,
+#donaciones-snap .btn-secondary:hover {
+  background-color: #f8c22e;
+  color: #75005f;
+}
+#donaciones-snap .modal-content {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+}
+#donaciones-snap .modal-header {
+  background-color: #75005f;
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+#donaciones-snap .modal-body input,
+#donaciones-snap .modal-body select,
+#donaciones-snap .modal-body textarea {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+#donaciones-snap .modal-body input:focus,
+#donaciones-snap .modal-body select:focus,
+#donaciones-snap .modal-body textarea:focus {
+  outline: 2px solid #75005f;
 }
