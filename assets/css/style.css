@@ -25,6 +25,7 @@ body {
   font-family: 'Max Rounded', sans-serif;
   height: 100%;
   overflow: hidden; /* El scroll se realizará en .snap-container */
+  overflow-x: hidden;
 }
 
 /* --- Navbar --- */
@@ -124,8 +125,8 @@ body {
 }
 #Footer {
   background-color: rgb(249, 211, 50);
-  ;
 }
+
 /* Footer */
 .footer {
   width: 100%;
@@ -168,7 +169,6 @@ body {
   background-color: #ff3b9d;
   color: white;
 }
-
 
 /* --- Responsive para Navbar --- */
 @media (max-width: 768px) {
@@ -274,9 +274,9 @@ body {
 /* --- Estilos para la sección de Donaciones (#donaciones-snap) --- */
 #donaciones-snap {
   width: 100%;
-  height: 100%;
-  background-color: #f8c22e;
-  background-image: url(https://casaronald.org.pe/wp-content/uploads/conJuntos2.jpeg);
+  height: 100vh;
+  background-color: #c6a444;
+  background-image: url('https://casaronald.org.pe/wp-content/uploads/conJuntos2.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -338,4 +338,40 @@ body {
 #donaciones-snap .modal-body select:focus,
 #donaciones-snap .modal-body textarea:focus {
   outline: 2px solid #75005f;
+}
+
+/* --- Estilos Personalizados para los Radios en el Formulario de Donación --- */
+form#form-donacion input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #75005f;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+  margin-right: 8px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+form#form-donacion input[type="radio"]:hover {
+  border-color: #f8c22e;
+}
+
+form#form-donacion input[type="radio"]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: #75005f;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+form#form-donacion input[type="radio"]:checked::before {
+  transform: translate(-50%, -50%) scale(1);
 }
