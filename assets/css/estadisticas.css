@@ -57,7 +57,7 @@ html, body { /* Estilos generales para la página */
   left: 0; /* Se ubica a la izquierda */
   width: 100%; /* Ocupa todo el ancho */
   height: 100%; /* Ocupa toda la altura */
-  background-color: gray; /* Color de fondo */
+  background: linear-gradient(90deg, #c9c9c9, #ffcba3);
   background-size: cover; /* Ajusta la imagen de fondo para cubrir todo */
   background-position: center; /* Centra la imagen de fondo */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -139,4 +139,33 @@ html, body { /* Estilos generales para la página */
 
 .card-title-main { /* Margen superior para títulos dentro de cards */
   margin-top: 2px;
+}
+/* Para agrandar y centrar (con margin-top) los títulos de las minicards */
+#minicard1 .card-body,
+#minicard3 .card-body,
+#minicard5 .card-body{
+  color: rgb(147, 3, 69);
+  margin-top: 1px;    /* Ajusta el valor según lo que necesites */
+  font-size: 1.5rem;   /* Aumenta un poco el tamaño de fuente */
+}
+#minicard7 .card-body {
+  color: rgb(147, 3, 69);
+  margin-top: 5px;    /* Ajusta el valor según lo que necesites */
+  font-size: 18px;   /* Aumenta un poco el tamaño de fuente */
+}
+
+/* Para agrandar y dar más espacio vertical a los números */
+#totaldedonantes1,
+#totaldedonacion1,
+#totaldevoluntarios1 {
+  display: block;      /* Para que margin-top funcione correctamente */
+  margin-top: 30px;    /* Ajusta según lo requerido */
+  font-size: 3rem;     /* Aumenta considerablemente el tamaño de los números */
+  text-align: center;  /* Por si se necesita centrar el contenido */
+}
+#totaldedonantes2,
+#totaldedonacion2,
+#totaldevoluntarios2
+{
+  font-size: 20px;  
 }

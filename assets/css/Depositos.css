@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .encabezado {
+    margin-bottom: 20px;
+  }
+  
+  .contenedor {
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .boton-label {
+    background-color: #d8d816;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    margin: 10px 0;
+    cursor: default;
+    width: 100%;
+    font-family: "Sigmar", serif;
+  }
+  
+  .seccion-donacion {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  }
+  
+  #soles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .caja-donacion {
+    flex: 1 1 45%;
+    padding: 10px;
+  }
+  
+  .caja-donacion:last-child {
+    border-bottom: none;
+  }
+  
+  .icono img {
+    width: 150px;
+    height: auto;
+    margin: 10px 0;
+  }
+  
+  .icono {
+    width: 24px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  .titulo{
+    font-family: "Sigmar", serif;
+  }
+  
+  body{
+    font-family: "Catamaran", serif;
+  }
+  
+  .boton-label {
+    background-color:#930345 ;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    margin: 10px 0;
+    cursor: default;
+    width: 100%;
+    font-family: "Sigmar", serif;
+    transition: background-color 0.3s ease; /* Transición suave */
+  }
+  
+  
+  @media (min-width: 768px) {
+    /* Para pantallas grandes (PC) */
+    #soles {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .caja-donacion {
+        flex: 1 1 45%;
+        padding: 10px;
+        box-sizing: border-box;
+        border-bottom: none; /* Eliminamos la línea inferior */
+        border-right: 1px solid #ccc; /* Línea vertical */
+    }
+
+    /* Quitamos la línea de la última caja para que no haya un borde extra */
+    .caja-donacion:last-child {
+        border-right: none;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Para pantallas pequeñas (celulares) */
+    .caja-donacion {
+        border-right: none; /* Eliminamos la línea vertical */
+        border-bottom: 1px solid #ccc; /* Agregamos línea horizontal */
+    }
+
+    /* Quitamos la línea de la última caja en móvil */
+    .caja-donacion:last-child {
+        border-bottom: none;
+    }
+}
+.boton-abajo {
+  display: block;  /* Hace que el botón ocupe una línea completa */
+  width: fit-content; /* Ajusta el ancho al contenido */
+  margin: 20px auto; /* Lo centra horizontalmente */
+  background-color: #930345;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "Sigmar", serif;
+  transition: background-color 0.3s ease;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.boton-abajo:hover {
+  background-color: #ff69b4;
+}
+

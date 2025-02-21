@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConJuntos</title>
-    <link rel="icon" type="image/png" href="/assets/img/logo-de-conjuntos.png">
-    <link rel="stylesheet" href="assets/css/login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConJuntos - Iniciar Sesión</title>
+  <link rel="icon" type="image/png" href="/assets/img/logo-de-conjuntos.png">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
-    
-    <div class="contenedor">
-        <h1 class="titulo"><b>Iniciar Sesión</b></h1>
-        <form id="formulario_login"> 
-            <label for="email_login">Email:</label>
-            <input type="email" id="email_login" required>
-            <br><br>
-            <label for="password_login">Contraseña:</label>
-            <input type="password" id="password_login" required>
-            <br><br>
-            <div class="flex">
-                <input type="submit" value="Iniciar Sesión">
-                <br><br>
-            </div>
-        </form>
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="contenedor p-4 rounded shadow">
+      <h1 class="titulo text-center mb-4"><b>Iniciar Sesión</b></h1>
+      <form id="formulario_login"> 
+        <div class="mb-3">
+          <label for="email_login" class="form-label">Email:</label>
+          <input type="email" id="email_login" class="form-control" required autocomplete="username">
+        </div>
+        <div class="mb-3">
+          <label for="password_login" class="form-label">Contraseña:</label>
+          <div class="input-group">
+            <input type="password" id="password_login" class="form-control" required autocomplete="current-password">
+            <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+              <i class="bi bi-eye"></i>
+            </span>
+          </div>
+        </div>
+        <div class="d-grid">
+          <!-- Botón idéntico al diseño que enviaste -->
+          <button type="submit" class="btnfos btnfos-5">Iniciar Sesión</button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
-
-    <!-- Tu script como módulo -->
-    <script type="module" src="assets/js/login.js"></script> 
+  <script type="module" src="assets/js/login.js"></script>
+  <!-- Bootstrap JS (opcional, para componentes de Bootstrap) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

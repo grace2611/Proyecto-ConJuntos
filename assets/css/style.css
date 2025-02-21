@@ -17,12 +17,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: clip; 
 }
 
 html,
 body {
   color: #930345;
-  font-family: 'Max Rounded', sans-serif;
+  font-family: 'Max Rounded Bold', 'Max Rounded', sans-serif;
   height: 100%;
   overflow: hidden; /* El scroll se realizará en .snap-container */
   overflow-x: hidden;
@@ -263,6 +264,7 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 2rem auto;
+  margin-top: 5px;
 }
 .card {
   background: #fff;
@@ -280,6 +282,10 @@ body {
   max-width: 100%;
   height: auto;
   display: block;
+}
+.titulo-programas {
+  margin-top: 32px;
+  text-align: center;
 }
 
 /* --- Responsive para Carousel y Cards --- */
@@ -346,7 +352,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(8px);
+  filter: blur(7px);
   z-index: 0;
 }
 #donaciones-header {
@@ -543,4 +549,253 @@ form#form-donacion input[type="radio"]:checked::before {
 .slideshow .arrow:hover {
   background: rgba(255, 255, 255, 0.261);
   transform: translateY(-50%) scale(1.1);
+}
+
+/* --- NUEVO BLOQUE: Valores Interactivos --- */
+.snap-item#Valores {
+  background-color: #f8ebd0;
+}
+.snap-item#Valores h2 {
+  color: #78123a;
+  margin-bottom: 20px;
+}
+.snap-item#Valores .container {
+  display: grid;
+  grid-template-columns: repeat(3, 150px); /* Asegúrate de que coincida con el tamaño de los círculos */
+  grid-template-rows: repeat(2, 150px);
+  /* Separa más en ancho: row-gap 20px y column-gap 40px */
+  gap: 20px 40px;
+  position: relative;
+  justify-content: center;
+}
+
+/* Agrandar los círculos en la sección de Valores Interactivos */
+.snap-item#Valores .valor {
+  width: 150px;       /* Aumenta el tamaño (ajusta según tu necesidad) */
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;    /* Puedes ajustar el tamaño de fuente si es necesario */
+  font-weight: bold;
+  text-align: center;
+  color: #78123a;
+}
+
+/* Asegurar que la imagen dentro del nuevo círculo se ajuste sin deformarse */
+.snap-item#Valores .new-circle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.snap-item#Valores .yellow {
+  background-color: #f4c42f;
+  will-change: transform;
+}
+.snap-item#Valores .red {
+  background-color: #78123a;
+  color: #f4c42f;
+  position: absolute;
+}
+.snap-item#Valores .smiley {
+  font-size: 20px;
+}
+.snap-item#Valores .smiley1 {
+  top: 50px;
+  right: 315px;
+  width: 90px;
+  height: 90px;
+  background-color: #950245;
+}
+.snap-item#Valores #izquierda {
+  position: absolute;
+  top: -25px;
+  left: -27px;
+  height: 197px;
+  width: 183px;
+}
+.snap-item#Valores .smiley2 {
+  bottom: -10px;
+  right: -20px;
+}
+.snap-item#Valores .yellow:hover {
+  transform: scale(1.1) translateY(-15px);
+  transition: transform 0.3s ease-out;
+}
+.circulo-morado {
+  background-color: rgb(148, 3, 70);
+}
+.body2 {
+  background-color: #FFC72C; /* Fondo amarillo */
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Ocupa toda la pantalla */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.contenedorD {
+  background-color: #86004C; /* Color vino */
+  color: white;
+  padding: 10px;
+  border-radius: 900% 900% 0 0; /* Bordes curvos en la parte superior */
+  width: 100%;
+  height: 90vh; /* Ocupa el 90% de la pantalla */
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.body2 h1 {
+  font-size: 40px;
+  margin-bottom: -250px;
+  font-family: "Chau Philomene One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.body2 h2 {
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  font-family: "Chau Philomene One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.body2 h3 {
+  font-size: 50px;
+  font-weight: normal;
+  font-family: "Chau Philomene One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.opcionesD {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 350px; /* Separación entre el título y las opciones */
+  gap: 10px;
+}
+
+.botonD {
+  background-color: #63918b;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.opcionD {
+  background-color: #f5bfd7;
+  color: #51606f;
+  padding: 20px;
+  border-radius: 50px;
+  width: 250px;
+  height: 330px;
+  text-align: center;
+  box-shadow: 4px 4px 10px rgba(19, 13, 13, 0.2);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.opcionD img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+}
+
+.ir-arribaD {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ir-arribaD img {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+}
+
+.ir-arribaD a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+/* Forzar que el snap item "Formas de Pago" ocupe el 100% del viewport */
+#formasDePago {
+  padding: 0;         /* Elimina el padding por defecto */
+  margin: 0;          /* Elimina márgenes que puedan interferir */
+  width: 100vw;       /* 100% del ancho de la ventana */
+  height: 100vh;      /* 100% del alto de la ventana */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Opcional: asegurar que el contenido interno (.body2) ocupe todo el espacio */
+#formasDePago .body2 {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ajustes responsivos para la nueva sección */
+@media (max-width: 768px) {
+  .contenedorD {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50% 50% 0 0;
+    padding-bottom: 50px;
+    width: 100%;
+  }
+  .opcionesD {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+  }
+  .opcionD {
+    width: 90%;
+    max-width: 350px;
+    padding: 30px;
+    text-align: center;
+  }
+  .opcionD img {
+    width: 120px;
+  }
+  h1 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  .botonD {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+}
+.aumentarmargintop{
+  margin-top: 90px;
 }
