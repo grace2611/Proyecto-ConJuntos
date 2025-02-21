@@ -140,3 +140,12 @@ body {
   background-color: #ff69b4;
 }
 
+.achicarimagen{
+  width: 100px;
+  height: auto;
+  margin: 10px 0;
+}
+#imagenlogobcp{
+  width: 100px;
+  height: 80px;
+}
