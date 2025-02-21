@@ -20,7 +20,7 @@ menuToggle.addEventListener('click', () => {
 /* --- Inicialización de Swiper --- */
 var thumbnailSwiper = new Swiper('.thumbnail-slider', {
   direction: 'horizontal',
-  slidesPerView: 4,
+  slidesPerView: 7,
   spaceBetween: 10,
   watchSlidesProgress: true,
   breakpoints: {
@@ -42,6 +42,44 @@ var mainSwiper = new Swiper('.main-slider', {
   autoplay: {
     delay: 3000,
     disableOnInteraction: false
+  }
+});
+
+/* --- Slideshow para Snap Item 2: "¿Quienes somos?" --- */
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll("#snap2 .slide");
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    slides[currentIndex].classList.remove("active");
+    currentIndex = index;
+    slides[currentIndex].classList.add("active");
+  }
+
+  function changeSlide() {
+    showSlide((currentIndex + 1) % slides.length);
+  }
+
+  let slideInterval = setInterval(changeSlide, 6000);
+
+  // Flechas de navegación manual
+  const prevArrow = document.querySelector("#snap2 .arrow.prev");
+  const nextArrow = document.querySelector("#snap2 .arrow.next");
+
+  if (prevArrow && nextArrow) {
+    prevArrow.addEventListener("click", () => {
+      clearInterval(slideInterval);
+      const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(newIndex);
+      slideInterval = setInterval(changeSlide, 6000);
+    });
+
+    nextArrow.addEventListener("click", () => {
+      clearInterval(slideInterval);
+      const newIndex = (currentIndex + 1) % slides.length;
+      showSlide(newIndex);
+      slideInterval = setInterval(changeSlide, 6000);
+    });
   }
 });
 
@@ -89,13 +127,15 @@ tipoDonacionRadios.forEach(radio => {
   });
 });
 
-/* Mostrar/ocultar input "Otro" según la selección */
+/* Mostrar/ocultar input "Otro" según la selección y hacerlo obligatorio */
 montoRadios.forEach(radio => {
   radio.addEventListener("change", () => {
     if (radio.value === "otro") {
       divOtroMonto.style.display = "block";
+      inputOtroMonto.required = true;
     } else {
       divOtroMonto.style.display = "none";
+      inputOtroMonto.required = false;
     }
   });
 });
@@ -119,6 +159,10 @@ formDonacion.addEventListener("submit", async (e) => {
     }
   });
   if (montoSeleccionado === "otro") {
+    if (inputOtroMonto.value.trim() === "") {
+      alert("Por favor, ingrese un monto en la opción 'otro'.");
+      return;
+    }
     montoSeleccionado = inputOtroMonto.value;
   }
   const monto = Number(montoSeleccionado);
@@ -137,6 +181,11 @@ formDonacion.addEventListener("submit", async (e) => {
     formDonacion.reset();
     opcionesMontoDiv.style.display = "none";
     divOtroMonto.style.display = "none";
+    const modalDonacionEl = document.getElementById("modal-donacion");
+    const modalDonacionInstance = bootstrap.Modal.getInstance(modalDonacionEl);
+    if (modalDonacionInstance) {
+      modalDonacionInstance.hide();
+    }
     document.getElementById("mensaje-agradecimiento").innerText = `${nombre}, gracias por su donación exitosa.`;
     const modalAgradecimiento = new bootstrap.Modal(document.getElementById("modal-agradecimiento"));
     modalAgradecimiento.show();
@@ -157,6 +206,11 @@ formVoluntariado.addEventListener("submit", async (e) => {
       fecha: serverTimestamp()
     });
     formVoluntariado.reset();
+    const modalVoluntariadoEl = document.getElementById("modal-voluntariado");
+    const modalVoluntariadoInstance = bootstrap.Modal.getInstance(modalVoluntariadoEl);
+    if (modalVoluntariadoInstance) {
+      modalVoluntariadoInstance.hide();
+    }
     const nombreVoluntario = document.getElementById("nombre-voluntario").value;
     document.getElementById("mensaje-agradecimiento").innerText = `¡Estamos agradecidos de que hayas elegido donar tu tiempo y talento a nuestra organización, ${nombreVoluntario}!`;
     const modalAgradecimiento = new bootstrap.Modal(document.getElementById("modal-agradecimiento"));
@@ -164,4 +218,15 @@ formVoluntariado.addEventListener("submit", async (e) => {
   } catch (error) {
     console.error("Error al guardar el voluntariado:", error);
   }
+});
+
+// Inicializar tooltips de Bootstrap para elementos con data-bs-toggle="tooltip"
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl);
+});
+
+// Al hacer click en el icono de acceso de administrador, se redirige directamente a login.html
+document.getElementById('admin-access').addEventListener('click', () => {
+  window.location.href = 'login.html';
 });

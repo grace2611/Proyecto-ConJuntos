@@ -1,82 +1,85 @@
-@font-face {
-  font-family: 'Max Rounded';
-  src: url('../font/Maax Rounded.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Max Rounded Bold';
-  src: url('../font/Maax\ Rounded\ Bold.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+@font-face { /* Define una nueva fuente personalizada */
+  font-family: 'Max Rounded'; /* Nombre de la fuente que se usará en CSS */
+  src: url('../font/Maax Rounded.otf') format('opentype'); /* Ubicación del archivo de fuente */
+  font-weight: normal; /* Peso de la fuente */
+  font-style: normal; /* Estilo de la fuente */
 }
 
-html, body {
-  font-family: 'Max Rounded', sans-serif;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden; 
-  height: 100%;
+
+@font-face { /* Define una segunda fuente personalizada */
+  font-family: 'Max Rounded Bold'; /* Nombre de la fuente en negrita */
+  src: url('../font/Maax\ Rounded\ Bold.otf') format('opentype'); /* Ubicación del archivo de fuente */
+  font-weight: normal; /* Peso de la fuente */
+  font-style: normal; /* Estilo de la fuente */
 }
 
-.sombra {
-  box-shadow: 4px 4px 4px rgba(123, 123, 123, 0.5);
+html, body { /* Estilos generales para la página */
+  font-family: 'Max Rounded', sans-serif; /* Usa la fuente personalizada */
+  margin: 0; /* Elimina márgenes */
+  padding: 0; /* Elimina el relleno */
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  overflow-x: hidden; /* Evita el desplazamiento horizontal */
+  height: 100%; /* Ocupa todo el alto de la pantalla */
 }
 
-.snap-container {
-  width: 100%;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
+.sombra { /* Agrega una sombra a los elementos con esta clase */
+  box-shadow: 4px 4px 4px rgba(123, 123, 123, 0.5); /* Define la sombra */
 }
 
-.snap-item {
-  width: 100%;
-  scroll-snap-align: start;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.snap-container { /* Contenedor que permite el desplazamiento con snap */
+  width: 100%; /* Ocupa todo el ancho */
+  scroll-snap-type: y mandatory; /* Activa el scroll snap en el eje Y */
+  overflow-y: scroll; /* Permite desplazamiento vertical */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+.snap-item { /* Elementos dentro del contenedor con snap */
+  width: 100%; /* Ocupa todo el ancho */
+  scroll-snap-align: start; /* Alineación al inicio en el scroll */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  display: flex; /* Usa flexbox */
+  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: center; /* Centra los elementos horizontalmente */
 }
 
 /* Modificación en card-item para usar ::before y lograr el efecto blur */
-.card-item {
-  position: relative; /* Necesario para posicionar el pseudo-elemento */
-  width: 100%;
-  height: 100vh;
-  background-color: transparent; /* Asegura que no se muestre el fondo blanco */
+.card-item { 
+  position: relative; /* Permite posicionar elementos dentro del card */
+  width: 100%; /* Ocupa todo el ancho */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-color: transparent; /* Hace el fondo transparente */
 }
 
-.card-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('../img/adminconjuntos.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(5px); 
-  z-index: -1;
+.card-item::before { /* Agrega un pseudo-elemento antes del card */
+  content: ""; /* Elemento vacío */
+  position: absolute; /* Se posiciona de forma absoluta dentro del card */
+  top: 0; /* Se ubica en la parte superior */
+  left: 0; /* Se ubica a la izquierda */
+  width: 100%; /* Ocupa todo el ancho */
+  height: 100%; /* Ocupa toda la altura */
+  background-color: gray; /* Color de fondo */
+  background-size: cover; /* Ajusta la imagen de fondo para cubrir todo */
+  background-position: center; /* Centra la imagen de fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  filter: blur(5px); /* Aplica un desenfoque al fondo */
+  z-index: -1; /* Envía el pseudo-elemento al fondo */
 }
 
-.minicards {
-  background-color: rgba(255, 255, 255, 0.617);
-  margin: 0;
-  border-radius: 17px;
+.minicards { /* Estilos para las minicards */
+  background-color: rgba(255, 255, 255, 0.617); /* Fondo semi-transparente */
+  margin: 0; /* Elimina márgenes */
+  border-radius: 17px; /* Bordes redondeados */
 }
 
-.fondo-transparente{
-  background-color: rgba(255, 255, 255, 0.617);
+.fondo-transparente { /* Fondo semi-transparente */
+  background-color: rgba(255, 255, 255, 0.617); /* Mismo color que las minicards */
 }
 
-.botonseccion {
-  border-radius: 17px;
+.botonseccion { /* Estilo para los botones */
+  border-radius: 17px; /* Bordes redondeados */
 }
 
+/* Estilos individuales para cada minicard */
 #minicard1 { height: 50px; margin-left: 5px; margin-top: 5px; }
 #minicard2 { height: 153px; margin-left: 5px; }
 #minicard3 { height: 50px; margin-left: 5px; }
@@ -90,50 +93,50 @@ html, body {
 #minicard11 { height: 207px; margin-right: 5px; }
 #minicard12 { height: 207px; margin-right: 5px; margin-bottom: 5px; }
 
-.card {
-  margin-bottom: 3.6px;
-  border-radius: 5px;
+.card { /* Estilo para los cards generales */
+  margin-bottom: 3.6px; /* Espacio inferior */
+  border-radius: 5px; /* Bordes redondeados */
 }
 
-.minicards-flex {
-  display: flex;
-  width: 100%;
-  height: 70px;
-  padding: 0;
+.minicards-flex { /* Contenedor flex para las minicards */
+  display: flex; /* Usa flexbox */
+  width: 100%; /* Ocupa todo el ancho */
+  height: 70px; /* Altura fija */
+  padding: 0; /* Sin relleno */
+  margin: 0; /* Sin margen */
+}
+
+.minicard-large { /* Define minicards grandes */
+  width: 45%; /* Ocupan el 45% del ancho del contenedor */
+}
+
+.minicard-small { /* Define minicards pequeñas */
+  width: 5%; /* Ocupan el 5% del ancho del contenedor */
+}
+
+.minicards-flex > .card { /* Ajusta el margen de los cards dentro de minicards-flex */
   margin: 0;
 }
 
-.minicard-large {
-  width: 45%; 
+.table-responsive thead th { /* Estilos para las tablas */
+  position: sticky; /* Fija el encabezado en la parte superior */
+  top: 0; /* Se mantiene en la parte superior */
+  z-index: 1; /* Se mantiene por encima de otros elementos */
+  background-color: rgb(147, 3, 69); /* Color de fondo del encabezado */
 }
 
-.minicard-small {
-  width: 5%;
-}
-
-.minicards-flex > .card {
-  margin: 0;
-}
-
-.table-responsive thead th {
-  position: sticky;
-  top: 0;
-  z-index: 1; 
-  background-color: rgb(147, 3, 69); 
-}
-
-.minicard-seccion2 {
+.minicard-seccion2 { /* Fondo transparente para minicard sección 2 */
   background-color: rgba(255, 255, 255, 0);
 }
 
-.minicard-seccion3 {
+.minicard-seccion3 { /* Fondo transparente para minicard sección 3 */
   background-color: rgba(255, 255, 255, 0);
 }
 
-.cuadrodedatos {
+.cuadrodedatos { /* Define la altura del cuadro de datos */
   height: 465px;
 }
 
-.card-title-main {
+.card-title-main { /* Margen superior para títulos dentro de cards */
   margin-top: 2px;
 }

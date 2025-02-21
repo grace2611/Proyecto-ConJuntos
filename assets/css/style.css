@@ -82,6 +82,11 @@ body {
   color: #fff;
   cursor: pointer;
 }
+.modal-dialog {
+  margin: auto;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
 
 /* --- Snap Container --- */
 .snap-container {
@@ -105,9 +110,17 @@ body {
 }
 .snap-item.footer {
   height: 30%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(249, 211, 50);
+}
+#snap5 {
+  padding: 0;
 }
 
-/* Fondos para cada snap item */
+/* --- Fondos para cada snap item --- */
 #Inicio {
   background-color: #faebd7;
 }
@@ -127,16 +140,26 @@ body {
   background-color: rgb(249, 211, 50);
 }
 
-/* Footer */
+/* --- Footer --- */
 .footer {
   width: 100%;
   text-align: center;
-  padding: 15px 0;
   font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
 }
+
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-top {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -144,7 +167,10 @@ body {
 }
 .footer-info p {
   color: #930345;
-  margin: 5px 0;
+  margin: 0;
+}
+.aumentar-top {
+  padding-top: 5px;
 }
 .social-icons a {
   color: #930345;
@@ -156,18 +182,18 @@ body {
 .social-icons a:hover {
   color: #ff69b4;
 }
-.admin-btn {
-  border: 2px solid #ff69b4;
-  background: none;
-  color: #ff69b4;
-  padding: 10px 20px;
+#admin-access {
+  font-size: 30px;
+  color: #930345;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s, color 0.3s;
 }
-.admin-btn:hover {
-  background-color: #ff3b9d;
-  color: white;
+#admin-access:hover {
+  color: #b70d59;
+}
+.center-footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
 }
 
 /* --- Responsive para Navbar --- */
@@ -213,8 +239,8 @@ body {
   opacity: 1;
 }
 .thumbnail-slider .swiper-slide img {
-  width: 100%;
-  height: auto;
+  width: 100px;
+  height: 60px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -224,7 +250,7 @@ body {
 }
 .main-slider .swiper-slide img {
   width: 100%;
-  height: 100%;
+  height: 500px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -243,7 +269,11 @@ body {
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: justify;
+}
+.card h5 {
   text-align: center;
+  font-weight: bold;
 }
 .imagen-programas,
 .imagen-identidad {
@@ -271,22 +301,60 @@ body {
   }
 }
 
-/* --- Estilos para la sección de Donaciones (#donaciones-snap) --- */
+/* --- Botones Adicionales (solo del segundo CSS) --- */
+.boton1,
+.boton2,
+.boton3 {
+  display: inline-block;
+  background-color: #ff69b4;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+.boton1:hover,
+.boton2:hover,
+.boton3:hover {
+  background-color: #930345;
+}
+
+/* --- Estilos para la sección de Donaciones (#donaciones-snap) con efecto blur en la imagen --- */
 #donaciones-snap {
   width: 100%;
   height: 100vh;
   background-color: #c6a444;
-  background-image: url('https://casaronald.org.pe/wp-content/uploads/conJuntos2.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
+}
+#donaciones-snap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/imagendedonacionesyvoluntariado.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(8px);
+  z-index: 0;
+}
+#donaciones-header {
+  display: block;
 }
 #donaciones-snap .container {
+  position: relative;
+  z-index: 1;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 2rem;
   border-radius: 20px;
@@ -294,7 +362,6 @@ body {
   text-align: center;
   max-width: 600px;
   width: 90%;
-  z-index: 1;
 }
 #donaciones-snap h1 {
   color: #75005f;
@@ -354,11 +421,9 @@ form#form-donacion input[type="radio"] {
   margin-right: 8px;
   transition: border-color 0.2s ease-in-out;
 }
-
 form#form-donacion input[type="radio"]:hover {
   border-color: #f8c22e;
 }
-
 form#form-donacion input[type="radio"]::before {
   content: "";
   position: absolute;
@@ -371,7 +436,111 @@ form#form-donacion input[type="radio"]::before {
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.2s ease-in-out;
 }
-
 form#form-donacion input[type="radio"]:checked::before {
   transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- Estilos adicionales del segundo CSS (Admin Button) --- */
+.admin-btn {
+  border: 2px solid #ff69b4;
+  background: none;
+  color: #ff69b4;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+}
+.admin-btn:hover {
+  background-color: #ff3b9d;
+  color: white;
+}
+
+/* --- MODIFICACIONES PARA SNAP ITEM 2 (diseño Tabatha) --- */
+#snap2 .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 20px;
+}
+#snap2 .info {
+  flex: 1;
+  max-width: 35%;
+}
+#snap2 .info h1 {
+  font-size: 2.8rem;
+  color: #930345;
+  margin-bottom: 15px;
+}
+#snap2 .info p {
+  text-align: justify;
+  margin: 0; 
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.5;
+}
+#snap2 .slideshow {
+  flex: 1;
+  position: relative;
+  max-width: 700px;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dddddd04;
+}
+#snap2 .slide {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+#snap2 .slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* --- Estilos para las flechas del slideshow en Snap Item 2 --- */
+.slideshow {
+  position: relative;
+}
+.slideshow .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.slideshow .arrow.prev {
+  left: 10px;
+}
+.slideshow .arrow.next {
+  right: 10px;
+}
+.slideshow .arrow:hover {
+  background: rgba(255, 255, 255, 0.261);
+  transform: translateY(-50%) scale(1.1);
 }
